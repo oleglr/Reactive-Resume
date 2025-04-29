@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: reactive-resume-frontend
+    env: static
+    buildCommand: cd apps/client && pnpm install && pnpm build
+    staticPublishPath: apps/client/dist
+    envVars:
+      - key: VITE_PUBLIC_URL
+        value: https://your-frontend-url.onrender.com
+      - key: VITE_API_URL
+        value: https://your-backend-url.onrender.com/api
+  - type: web
+    name: reactive-resume-backend
+    env: node
+    repo: https://github.com/oleglr/Reactive-Resume.git
+    buildCommand: pnpm install && pnpm build
+    startCommand: node dist/apps/server/main
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false # Будет настроено вручную
+      - key: JWT_SECRET
+        sync: false # Будет настроено вручную
+      - key: VITE_API_URL
+        value: https://your-backend-url.onrender.com/api
+databases:
+  - name: reactive-resume-db
+    databaseName: reactive_resume
+    user: reactive_resume_user

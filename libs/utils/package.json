@@ -9,11 +9,12 @@
     "access": "public"
   },
   "dependencies": {
+    "@reactive-resume/utils": "file:",
     "@swc/helpers": "~0.5.2",
-    "dayjs": "^1.11.10",
     "clsx": "^2.0.0",
-    "tailwind-merge": "^2.0.0",
+    "dayjs": "^1.11.10",
     "papaparse": "^5.4.1",
+    "tailwind-merge": "^2.0.0",
     "unique-names-generator": "^4.7.1"
   }
 }
